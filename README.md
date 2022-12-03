@@ -4,8 +4,18 @@
 **NOTE:** This readme is DERIVED from the knowledge graph defined here:
         https://airtable.com/appsl1IuS9feiUMfF/tblvNX7NFoldBUYox/viwti0QueGt41e9Ec?blocks=hide
 
-You may find this JSON version of rules helpful - 
+You may find this JSON version of rules helpful - which allows for the following pseudo code to solve the problem in ~8 lines.
 **Knowledge Graph JSON**: [SSoT/Day02.json](SSoT/Day02.json).
+
+        private int CalculateLineScore(string line)                                                   // i.e. "A Y" = 2 + 6 = 8
+        {
+            var parts = line.Split(" ".ToCharArray()).ToList();                                       // "A Y" => ["A","Y"]
+            var opponentSign = this.SignsByOpCode[parts[0]];                                          // Full Sign Object for A = Rock
+            var suggestedSign = this.SignsBySuggestionCode[parts[1]];                                 // Full Sign Object for Y = Paper
+            if (suggestedSign.WinsAgainstName == opponentSign.Name) return suggestedSign.WinScore;    // Return 8
+            else if (suggestedSign.LosesToName == opponentSign.Name) return suggestedSign.LossScore;  // Return 2
+            else return sssuggestedSign.DrawScore;                                                    // Return 5
+        }
 
 The Elves begin to set up camp on the beach. To decide whose tent gets to be closest to the snack storage, a giant Rock Paper Scissors tournament is already in progress.
 
@@ -13,15 +23,15 @@ Rock Paper Scissors is a game between two players. Each game contains many round
 
 Rock defeats Scissors
 
-<img src="https://v5.airtableusercontent.com/v1/11/11/1670011200000/vDNIbVnCenipc2UTQksDiw/SXm6r3CZ94_kfwlf-jAY_r8QfDGTqDJPjQZvxJuBTMP0SP8yp622CiwSL-f8cIZSTq5sIOHdcBjQVNaI3vg0kBUdYDLo-WUUS3ZieuqjTiHNcPaeRJIwlMp8nqzW0Z9oEApjWNCPG1B7r1tPJ0kKDOXzt31yYR2NMJSteMqAypg/AyUW9K2Y4fpzKsX8v706i81N_ZLxnX9jSgO-Ti-ZA-U" style="width: 5em;" /> -> <img src="https://v5.airtableusercontent.com/v1/11/11/1670011200000/a4jQfHX4Bt7R3Ct0DsdSiQ/50uSd_MSwsY5EoDUgpz-pLMMlDL3dNI7mwkYwJJ_LjUrnhkef19fbQW5kE7ERIaD7hpaZaJjp6QzkK6JbsrejvY0kVkvPl2ORL7ZWIvFUitQjFDBPDYMgc8Niui9kteoWE8ghnWSNah0ByL3A8509yreCEdImDVqyU8wz6_0lzQ/EleuLtghM8A57UA6U4SCXK66votMJOeNwNOrel72C-I" style="width: 5em;" />
+<img src="https://v5.airtableusercontent.com/v1/13/13/1670054400000/Sn7v-AY1h-Cy0LH7Y-qbaQ/vWHJxabiDYhV6R1PDrshjZnt9kf_3jI32ZHES4_43VeqJl5s0fSw2DvbIAeGj6fjG6YoP5QGPtHBBpYAeG5mIZCbMAzcd2HVCfWj2ImzwF8ROMT_3o1QFYu9H3NvmZzaD2CByZ2x6hyQrRCo06hHVEUkSuZwcP2d8mtpszFGMdo/bv159n2QdnQyS9CaXeLBj0LvD-pelTvxCX6iyXQociI" style="width: 5em;" /> -> <img src="https://v5.airtableusercontent.com/v1/13/13/1670054400000/6jzsY8XKfRrp7DtmnIz6Cg/Zo5th4PWxucXkdAA00qmm4AuYkAMRkauGhC6GyQ-wymQHfuxz1NpSnUipHSjyxoP8obgvkyfLJ4xRjlp8oQBE-uRRvXYCcA3pXMFjCKh2cUqeClSJ4ZBaEMX-3HVV3FdX7VlLHfPK9UkX0P92UuzdfzPNvV5OyGObcVre2hTmu4/fvoUqCVAX2k_GIwYt_Sn5E4hjvVg8HhFWGApbcN5Pt4" style="width: 5em;" />
 
 Paper defeats Rock
 
-<img src="https://v5.airtableusercontent.com/v1/11/11/1670011200000/u7UPng61e-J5zuJftLTPoQ/lfv21wpko9JLcsKI-hYLe9G41zBv7d-rNOUQ8GMKYKy3H5WkZlbMpbmHOecSgHEhdQsONBSe5nkI-dBiJG4W747LDh9eHdjE94id3kULNNvJ3Gvfkpw3n179-lLH1GiwpWC90Gh9yAy8gt-Xty8pydulnmDshouQL16glxyVOPY/kawao4qOAG3d-Vut4K62JOcaRIggEPNqV738Go7Wftg" style="width: 5em;" /> -> <img src="https://v5.airtableusercontent.com/v1/11/11/1670011200000/vDNIbVnCenipc2UTQksDiw/SXm6r3CZ94_kfwlf-jAY_r8QfDGTqDJPjQZvxJuBTMP0SP8yp622CiwSL-f8cIZSTq5sIOHdcBjQVNaI3vg0kBUdYDLo-WUUS3ZieuqjTiHNcPaeRJIwlMp8nqzW0Z9oEApjWNCPG1B7r1tPJ0kKDOXzt31yYR2NMJSteMqAypg/AyUW9K2Y4fpzKsX8v706i81N_ZLxnX9jSgO-Ti-ZA-U" style="width: 5em;" />
+<img src="https://v5.airtableusercontent.com/v1/13/13/1670054400000/IHoa_8MYcnIJ3UiSFJ8NGQ/oJlKEQsxzGpkxUJV1R4uOf3l89UmqAchsdK_DJiRb8uJJV23un3P-_WUHU8jtN8lp_qSs225bb8vn0WqtKOqMj5CnOyffJEzafXJ3n3qucpuFL_fIRyp6R28n754wxELsbdPS-FqPhFUh_HauL77D-EN8oK7Rdg2oWwas3LHhPs/kMiMGjGhvI9L-UAm35tZ27sVo_JGBQOb1N8cl2jx5BA" style="width: 5em;" /> -> <img src="https://v5.airtableusercontent.com/v1/13/13/1670054400000/Sn7v-AY1h-Cy0LH7Y-qbaQ/vWHJxabiDYhV6R1PDrshjZnt9kf_3jI32ZHES4_43VeqJl5s0fSw2DvbIAeGj6fjG6YoP5QGPtHBBpYAeG5mIZCbMAzcd2HVCfWj2ImzwF8ROMT_3o1QFYu9H3NvmZzaD2CByZ2x6hyQrRCo06hHVEUkSuZwcP2d8mtpszFGMdo/bv159n2QdnQyS9CaXeLBj0LvD-pelTvxCX6iyXQociI" style="width: 5em;" />
 
 Scissors defeats Paper
 
-<img src="https://v5.airtableusercontent.com/v1/11/11/1670011200000/a4jQfHX4Bt7R3Ct0DsdSiQ/50uSd_MSwsY5EoDUgpz-pLMMlDL3dNI7mwkYwJJ_LjUrnhkef19fbQW5kE7ERIaD7hpaZaJjp6QzkK6JbsrejvY0kVkvPl2ORL7ZWIvFUitQjFDBPDYMgc8Niui9kteoWE8ghnWSNah0ByL3A8509yreCEdImDVqyU8wz6_0lzQ/EleuLtghM8A57UA6U4SCXK66votMJOeNwNOrel72C-I" style="width: 5em;" /> -> <img src="https://v5.airtableusercontent.com/v1/11/11/1670011200000/u7UPng61e-J5zuJftLTPoQ/lfv21wpko9JLcsKI-hYLe9G41zBv7d-rNOUQ8GMKYKy3H5WkZlbMpbmHOecSgHEhdQsONBSe5nkI-dBiJG4W747LDh9eHdjE94id3kULNNvJ3Gvfkpw3n179-lLH1GiwpWC90Gh9yAy8gt-Xty8pydulnmDshouQL16glxyVOPY/kawao4qOAG3d-Vut4K62JOcaRIggEPNqV738Go7Wftg" style="width: 5em;" />
+<img src="https://v5.airtableusercontent.com/v1/13/13/1670054400000/6jzsY8XKfRrp7DtmnIz6Cg/Zo5th4PWxucXkdAA00qmm4AuYkAMRkauGhC6GyQ-wymQHfuxz1NpSnUipHSjyxoP8obgvkyfLJ4xRjlp8oQBE-uRRvXYCcA3pXMFjCKh2cUqeClSJ4ZBaEMX-3HVV3FdX7VlLHfPK9UkX0P92UuzdfzPNvV5OyGObcVre2hTmu4/fvoUqCVAX2k_GIwYt_Sn5E4hjvVg8HhFWGApbcN5Pt4" style="width: 5em;" /> -> <img src="https://v5.airtableusercontent.com/v1/13/13/1670054400000/IHoa_8MYcnIJ3UiSFJ8NGQ/oJlKEQsxzGpkxUJV1R4uOf3l89UmqAchsdK_DJiRb8uJJV23un3P-_WUHU8jtN8lp_qSs225bb8vn0WqtKOqMj5CnOyffJEzafXJ3n3qucpuFL_fIRyp6R28n754wxELsbdPS-FqPhFUh_HauL77D-EN8oK7Rdg2oWwas3LHhPs/kMiMGjGhvI9L-UAm35tZ27sVo_JGBQOb1N8cl2jx5BA" style="width: 5em;" />
 
 
 
