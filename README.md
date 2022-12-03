@@ -6,16 +6,17 @@
 
 You may find this JSON version of rules helpful - which allows for the following pseudo code to solve the problem in ~8 lines.
 **Knowledge Graph JSON**: [SSoT/Day02.json](SSoT/Day02.json).
-
-        private int CalculateLineScore(string line)                                                   // i.e. "A Y" = 2 + 6 = 8
-        {
-            var parts = line.Split(" ".ToCharArray()).ToList();                                       // "A Y" => ["A","Y"]
-            var opponentSign = this.SignsByOpCode[parts[0]];                                          // Full Sign Object for A = Rock
-            var suggestedSign = this.SignsBySuggestionCode[parts[1]];                                 // Full Sign Object for Y = Paper
-            if (suggestedSign.WinsAgainstName == opponentSign.Name) return suggestedSign.WinScore;    // Return 8
-            else if (suggestedSign.LosesToName == opponentSign.Name) return suggestedSign.LossScore;  // Return 2
-            else return sssuggestedSign.DrawScore;                                                    // Return 5
-        }
+```
+private int CalculateLineScore(string line)                                                   // i.e. "A Y" = 2 + 6 = 8
+{
+    var parts = line.Split(" ".ToCharArray()).ToList();                                       // "A Y" => ["A","Y"]
+    var opponentSign = this.SignsByOpCode[parts[0]];                                          // Full Sign Object for A = Rock
+    var suggestedSign = this.SignsBySuggestionCode[parts[1]];                                 // Full Sign Object for Y = Paper
+    if (suggestedSign.WinsAgainstName == opponentSign.Name) return suggestedSign.WinScore;    // Return 8
+    else if (suggestedSign.LosesToName == opponentSign.Name) return suggestedSign.LossScore;  // Return 2
+    else return sssuggestedSign.DrawScore;                                                    // Return 5
+}
+```
 
 The Elves begin to set up camp on the beach. To decide whose tent gets to be closest to the snack storage, a giant Rock Paper Scissors tournament is already in progress.
 
